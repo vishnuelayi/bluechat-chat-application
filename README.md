@@ -15,7 +15,7 @@ BlueChat is a real-time chat application built with the MERN (MongoDB, Express.j
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/bluechat.git
+   git clone https://github.com/vishnuelayi/bluechat-chat-application
 Install dependencies:
 
 bash
