@@ -29,20 +29,27 @@ function Signup(props) {
         <Input
           placeholder="First Name"
           onChange={(e) => setFname(e.target.value)}
+          border="1px"
+          borderColor="#bee3f8"
         />
       </FormControl>
 
       <FormControl id="last-name" isRequired marginTop="10px" width="80%">
-        <Input placeholder="Last Name" />
+        <Input placeholder="Last Name" border="1px" borderColor="#bee3f8" />
       </FormControl>
 
       <FormControl id="email" isRequired marginTop="10px" width="80%">
-        <Input placeholder="Email" />
+        <Input placeholder="Email" border="1px" borderColor="#bee3f8" />
       </FormControl>
 
       <FormControl id="password" isRequired marginTop="10px" width="80%">
         <InputGroup>
-          <Input placeholder="Password" type={show ? "text" : "password"} />
+          <Input
+            placeholder="Password"
+            type={show ? "text" : "password"}
+            border="1px"
+            borderColor="#bee3f8"
+          />
 
           <InputRightElement width="4.5rem">
             <Button height="1.75rem" size="sm" onClick={handleShow}>
@@ -53,7 +60,12 @@ function Signup(props) {
       </FormControl>
 
       <FormControl id="c-password" isRequired marginTop="10px" width="80%">
-        <Input placeholder="Confirm Password" type="password" />
+        <Input
+          placeholder="Confirm Password"
+          type="password"
+          border="1px"
+          borderColor="#bee3f8"
+        />
       </FormControl>
 
       <Button
