@@ -2,33 +2,36 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel.js");
 const generateToken = require("../config/generateToken");
 
+//controller for register a user(signup)
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { fname, lname, email, password } = req.body;
 
-  if (!name || !email || !password) {
-    res.status(400);
-    throw new Error("Fill all the fields");
+  if (!fname || !lname || !email || !password) {
+    res.status(400).json({ error: "Fill all the fields" });
+    return;
   }
 
   const isUserExist = await User.findOne({ email });
 
   if (isUserExist) {
-    res.status(400);
-    throw new Error("User Already Exists!");
-  } else {
-    const user = await User.create({ name, email, password });
-    res.status(201);
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      picture: user.picture,
-      token: generateToken(user._id),
-    });
+    res.status(400).json({ error: "User Already Exists!" });
+    return;
   }
+
+  const user = await User.create({ fname, lname, email, password });
+  res.status(201);
+  res.json({
+    _id: user._id,
+    fname: user.fname,
+    lname: user.lname,
+    email: user.email,
+    password: user.password,
+    picture: user.picture,
+    token: generateToken(user._id),
+  });
 });
 
+//controller for login a user
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -41,7 +44,8 @@ const loginUser = asyncHandler(async (req, res) => {
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
-      name: user.name,
+      fname: user.fname,
+      lname: user.lname,
       email: user.email,
       password: user.password,
       picture: user.picture,
@@ -50,4 +54,26 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, loginUser };
+
+//to get all other users (exept the logged in one)
+const getUsers = asyncHandler(async (req, res) => {
+
+ 
+  try {
+   
+    const keyword = req.query.search ? {
+      $or:[
+        { fname: { $regex: req.query.search, $options: "i" }},
+        { email: { $regex: req.query.search, $options: "i" }},
+      ]
+    } : {};
+
+    const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+    res.json(users);
+
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+module.exports = { registerUser, loginUser, getUsers };

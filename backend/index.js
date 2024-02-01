@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const authRouter = require("./routes/authRoutes");
+const chatRouter = require("./routes/chatRoutes");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(morgan("dev"));
 
 app.use("/api/user", authRouter);
+app.use("/api/chats", chatRouter);
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello World</h1>");
