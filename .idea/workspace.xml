@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="26ce7205-8970-47fc-a14d-0d215b3fb38a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/userModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Signup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +65,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "E:\\MERN PROJECTS\\bluechat\\backend\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "ts.external.directory.path": "C:\\Users\\vishn\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -83,7 +88,11 @@
       <workItem from="1706281158681" duration="1032000" />
       <workItem from="1706291910171" duration="159000" />
       <workItem from="1706292407806" duration="73000" />
-      <workItem from="1706339260526" duration="2649000" />
+      <workItem from="1706339260526" duration="2990000" />
+      <workItem from="1706546434705" duration="5358000" />
+      <workItem from="1706628819940" duration="623000" />
+      <workItem from="1706763954950" duration="4843000" />
+      <workItem from="1706770053127" duration="12414000" />
     </task>
     <servers />
   </component>
