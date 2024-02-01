@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const authRouter = require("./routes/authRoutes");
+const notFound = require("./middleware/notFound");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 dotenv.config();
@@ -21,6 +23,9 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello World</h1>");
   res.status(200);
 });
+
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`server running on port number: ${PORT}`);
