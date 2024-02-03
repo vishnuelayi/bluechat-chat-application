@@ -127,4 +127,60 @@ const renameGroup = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { accessChat, getChats, createGroup, renameGroup };
+//controller for adding a user to a group chat
+const addUserToGroup = asyncHandler(async (req, res) => {
+  const { groupId, userId } = req.body;
+  try {
+    const added = await Chat.findOneAndUpdate(
+      { _id: groupId },
+      {
+        $push: { users: userId },
+      },
+      { new: true }
+    )
+      .populate("users", "-password")
+      .populate("groupAdmin", "-password");
+    1;
+    if (!added) {
+      res.status(400).send("Invalid groupId");
+      return;
+    }
+
+    res.status(200).json(added);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+
+const rmvUserToGroup = asyncHandler(async (req, res) => {
+  const { groupId, userId } = req.body;
+  try {
+    const removed = await Chat.findOneAndUpdate(
+      { _id: groupId },
+      {
+        $pull: { users: userId },
+      },
+      { new: true }
+    )
+      .populate("users", "-password")
+      .populate("groupAdmin", "-password");
+    1;
+    if (!removed) {
+      res.status(400).send("Invalid groupId");
+      return;
+    }
+
+    res.status(200).json(removed);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+
+module.exports = {
+  accessChat,
+  getChats,
+  createGroup,
+  renameGroup,
+  addUserToGroup,
+  rmvUserToGroup,
+};
